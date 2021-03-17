@@ -31,7 +31,7 @@ public class PrimitiveConstant extends PooledConstant {
 
   @Override
   public void resolveConstant(ConstantPool pool) {
-    if (type == CONSTANT_Class || type == CONSTANT_String || type == CONSTANT_MethodType || type == CONSTANT_Module || type == CONSTANT_Package) {
+    if (type == CONSTANT_Class || type == CONSTANT_String || type == CONSTANT_MethodType) {
       value = pool.getPrimitiveConstant(index).getString();
       initConstant();
     }
