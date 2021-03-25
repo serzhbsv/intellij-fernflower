@@ -1,4 +1,4 @@
-// Copyright 2000-2017 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+// Copyright 2000-2021 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
 package org.jetbrains.java.decompiler.struct.consts;
 
 import org.jetbrains.java.decompiler.code.CodeConstants;
@@ -212,18 +212,12 @@ public class ConstantPool implements NewClassNameBuilder {
     String newName = interceptor.getName(vt.value);
     if (newName != null) {
       StringBuilder buffer = new StringBuilder();
-
       if (vt.arrayDim > 0) {
-        for (int i = 0; i < vt.arrayDim; i++) {
-          buffer.append('[');
-        }
-
-        buffer.append('L').append(newName).append(';');
+        buffer.append("[".repeat(vt.arrayDim)).append('L').append(newName).append(';');
       }
       else {
         buffer.append(newName);
       }
-
       return buffer.toString();
     }
 
