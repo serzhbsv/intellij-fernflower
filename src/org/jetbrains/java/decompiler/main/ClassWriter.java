@@ -353,7 +353,7 @@ public class ClassWriter {
 
     appendModifiers(buffer, flags, CLASS_ALLOWED, isInterface, CLASS_EXCLUDED);
 
-    if (permittedSubclassQualifiedNames != null) {
+    if (permittedSubclassQualifiedNames != null && !isEnum) {
       buffer.append("sealed ");
     }
     else if (node.isNonSealed()) {
