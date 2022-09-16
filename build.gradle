@@ -41,12 +41,12 @@ task sourceJar(type:Jar) {
 tasks.withType(JavaCompile).configureEach {
   it.options.encoding = "UTF-8"
 
-  it.options.release = 11
+  it.options.release = 17
 }
 
 java {
-  sourceCompatibility = JavaVersion.toVersion(11)
-  targetCompatibility = JavaVersion.toVersion(11)
+  sourceCompatibility = JavaVersion.toVersion(17)
+  targetCompatibility = JavaVersion.toVersion(17)
 }
 
 publishing {
