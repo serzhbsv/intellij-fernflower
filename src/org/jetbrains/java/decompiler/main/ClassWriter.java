@@ -1153,19 +1153,15 @@ public class ClassWriter {
     buffer.append("// $FF: renamed from: ");
 
     switch (type) {
-      case CLASS:
-        buffer.append(ExprProcessor.buildJavaClassName(oldName));
-        break;
-
-      case FIELD:
+      case CLASS -> buffer.append(ExprProcessor.buildJavaClassName(oldName));
+      case FIELD -> {
         String[] fParts = oldName.split(" ");
         FieldDescriptor fd = FieldDescriptor.parseDescriptor(fParts[2]);
         buffer.append(fParts[1]);
         buffer.append(' ');
         buffer.append(getTypePrintOut(fd.type));
-        break;
-
-      default:
+      }
+      default -> {
         String[] mParts = oldName.split(" ");
         MethodDescriptor md = MethodDescriptor.parseDescriptor(mParts[2]);
         buffer.append(mParts[1]);
@@ -1180,6 +1176,7 @@ public class ClassWriter {
         }
         buffer.append(") ");
         buffer.append(getTypePrintOut(md.ret));
+      }
     }
 
     buffer.appendLineSeparator();
